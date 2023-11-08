@@ -1,0 +1,88 @@
+  DeviceFarmGetProject:
+    Identifier: aws/github-actions-runner@v1.0.0
+    Compute:
+      Type: EC2
+      Fleet: Linux.x86-64.Large
+    Configuration:
+      Steps:
+        - id: device-farm-action
+          name: device_farm_action
+          uses: aws-actions/aws-devicefarm-browser-testing@v2.0
+          env:
+            AWS_REGION: us-west-2
+          with:
+            project-arn: ${WorkflowSource.CommitId}
+            mode: project
+    Outputs:
+      Variables:
+        - device-farm-action_project-arn
+    DependsOn:
+      - FrontendCDKDeploy
+  DeviceFarmGetArtifacts:
+    Identifier: aws/github-actions-runner@v1.0.0
+    Compute:
+      Fleet: Linux.x86-64.Large
+      Type: EC2
+    Configuration:
+      Steps:
+        - id: device-farm-action-artifacts
+          name: device_farm_action
+          uses: aws-actions/aws-devicefarm-browser-testing@v2.0
+          env:
+            AWS_REGION: us-west-2
+          with:
+            mode: artifact
+            artifact-folder: todoapp
+            artifact-types: ALL
+            project-arn: ${WorkflowSource.CommitId}
+    Outputs:
+      Artifacts:
+        - Name: DeviceFarmArtifacts
+          Files:
+            - todoapp/**/*
+    DependsOn:
+      - RunTests
+  DeviceFarmGetProjectGrid:
+    Identifier: aws/github-actions-runner@v1.0.0
+    Compute:
+      Type: EC2
+      Fleet: Linux.x86-64.Large
+    Configuration:
+      Steps:
+        - id: device-farm-action
+          name: device_farm_action
+          uses: aws-actions/aws-devicefarm-browser-testing@v2.0
+          env:
+            AWS_REGION: us-west-2
+          with:
+            project-arn: ${DeviceFarmGetProject.device-farm-action_project-arn}
+            url-expires-seconds: 900
+            mode: gridurl
+    DependsOn:
+      - DeviceFarmGetProject
+  RunTests:
+    # Identifies the action. Do not modify this value.
+    Identifier: aws/build@v1.0.0
+    Outputs:
+      # Optional; Automatically discover reports for popular test frameworks
+      AutoDiscoverReports:
+        Enabled: true
+        ReportNamePrefix: report-
+    # Defines the action's properties.
+    Configuration:
+      # Required - Steps are sequential instructions that run shell commands
+      Steps:
+        - Run: export GRID_URL=${DeviceFarmGetProjectGrid.device-farm-action_grid-url}
+        - Run: export TEST_URL=${FrontendCDKDeploy.AppURL}
+        - Run: pip install poetry
+        - Run: cd harness
+        - Run: poetry install
+        - Run: poetry run pytest tests/step_defs/ -n logical --junit-xml=results-out.xml
+    Compute:
+      Type: EC2
+      Fleet: Linux.x86-64.Large
+    DependsOn:
+      - DeviceFarmGetProjectGrid
+    Inputs:
+      Sources:
+        - WorkflowSource

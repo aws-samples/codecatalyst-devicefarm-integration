@@ -1,0 +1,17 @@
+{
+    "scripts": {
+        "test": "wdio run wdio.conf.js"
+    },
+    "devDependencies": {
+        "@wdio/cli": "^8.16.15",
+        "@wdio/junit-reporter": "^8.16.12",
+        "@wdio/local-runner": "^8.16.15",
+        "@wdio/mocha-framework": "^8.16.15",
+        "@wdio/spec-reporter": "^8.16.12",
+        "puppeteer": "^21.3.5",
+        "wdio-aws-device-farm-service": "^8.0.3"
+    },
+    "dependencies": {
+        "@wdio/dot-reporter": "^8.16.12"
+    }
+}

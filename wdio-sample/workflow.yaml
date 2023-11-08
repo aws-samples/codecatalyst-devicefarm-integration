@@ -1,0 +1,72 @@
+  DeviceFarmGetProject:
+    Identifier: aws/github-actions-runner@v1.0.0
+    Compute:
+      Type: EC2
+      Fleet: Linux.x86-64.Large
+    Configuration:
+      Steps:
+        - id: device-farm-action
+          name: device_farm_action
+          uses: aws-actions/aws-devicefarm-browser-testing@v2.0
+          env:
+            AWS_REGION: us-west-2
+          with:
+            project-arn: ${WorkflowSource.CommitId}
+            mode: project
+    Outputs:
+      Variables:
+        - device-farm-action_project-arn
+    DependsOn:
+      - FrontendCDKDeploy
+  RunDeviceFarmTests:
+    Identifier: aws/build@v1.0.0
+    Compute:
+      Fleet: Linux.x86-64.Large
+      Type: EC2
+    Configuration:
+      Steps:
+        - Run: export PROJECT_ARN=${DeviceFarmGetProject.device-farm-action_project-arn}
+        - Run: export TEST_URL=${FrontendCDKDeploy.AppURL}
+        - Run: cd harness
+        - Run: yum install -y chromium
+        - Run: wget
+            https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+            && yum localinstall -y google-chrome-stable_current_x86_64.rpm
+        - Run: npm install
+        - Run: npm run test 2>&1 || true
+    DependsOn:
+      - DeviceFarmGetProject
+    Inputs:
+      Sources:
+        - WorkflowSource
+    Outputs:
+      AutoDiscoverReports:
+        Enabled: true
+        ReportNamePrefix: results-
+  DeviceFarmGetArtifacts:
+    Identifier: aws/github-actions-runner@v1.0.0
+    Compute:
+      Fleet: Linux.x86-64.Large
+      Type: EC2
+    Configuration:
+      Steps:
+        - id: device-farm-action-artifacts
+          name: device_farm_action
+          uses: aws-actions/aws-devicefarm-browser-testing@v2.0
+          env:
+            AWS_REGION: us-west-2
+          with:
+            mode: artifact
+            artifact-folder: todoapp
+            artifact-types: ALL
+            project-arn: ${WorkflowSource.CommitId}
+    DependsOn:
+      - RunDeviceFarmTests
+    Inputs:
+      Sources:
+        - WorkflowSource
+    Outputs:
+      Artifacts:
+        - Name: DeviceFarmArtifacts
+          Files:
+            - todoapp/**/*
