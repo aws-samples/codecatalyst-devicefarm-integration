@@ -3,7 +3,7 @@ These samples help users get started with AWS Device Farm usage via Amazon CodeC
 
 ![AWS Device Farm and Amazon CodeCatalyst Architecture](image.png)
 
-This is the repo that accompanies the following AWS blog post [Automate Web Application testing at scale, easily with AWS Device Farm and Amazon CodeCatalyst](http://#)
+This is the repo will accompany a future AWS blog post
 
 # Table of Contents
 - [Introduction](#introduction)
