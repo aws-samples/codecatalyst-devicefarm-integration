@@ -29,7 +29,7 @@ In this example we use the Github action https://github.com/aws-actions/aws-devi
 As WDIO takes care of the the creation of Device Farm grid urls then you don't need to worry about this.
 
 The harness folder contains
-- A `wdio.conf.js` file which defines the test configuration, number of runners ans test report definition. 
+- A `wdio.conf.js` file which defines the test configuration, number of runners and test report definition. 
 - The test specs for the Todo-app are located under the tests folder.
 
 ### Running locally without Amazon CodeCatalyst or the Github action
