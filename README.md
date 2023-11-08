@@ -13,7 +13,7 @@ This is the repo will accompany a future AWS blog post
     - [Running locally without Amazon CodeCatalyst or the Github action](#running-locally-without-amazon-codecatalyst-or-the-github-action)
   - [Pytest Python Sample](#pytest-python-sample)
     - [Running locally without Amazon CodeCatalyst](#running-locally-without-amazon-codecatalyst)
-  - [How to deploy either sample](#how-to-deploy-either-sample)
+  - [How to deploy either sample to Amazon CodeCatalyst](#how-to-deploy-either-sample-to-amazon-codecatalyst)
     - [Deploy Steps](#deploy-steps)
       - [Creating a Project](#creating-a-project)
       - [Changing the Code to include testing](#changing-the-code-to-include-testing)
@@ -75,7 +75,7 @@ cd harness
 pytest tests/step_defs/ -n logical --junit-xml=results-out.xml
 ```
 
-## How to deploy either sample
+## How to deploy either sample to Amazon CodeCatalyst
 > **_NOTE:_**  Both samples function similarly with changes only in the RunTests action. Pytest needs an AWS Device Farm Grid URL where as WDIO takes care of this for you. 
 
 ### Deploy Steps
