@@ -69,7 +69,7 @@ Replace <APP_URL> with the deployed application's web address
 export PROJECT_ARN=$(aws devicefarm create-test-grid-project --name 'MyTestProject' --region us-west-2 --query testGridProject.arn | tr -d '"') 
 export GRID_URL=$(aws devicefarm create-test-grid-url --project-arn "$PROJECT_ARN" --expires-in-seconds 900 --region us-west-2 --query url | tr -d '"')
 
-export TODO_APP_URL=<APP_URL>
+export TEST_URL=<APP_URL>
 
 cd harness
 pytest tests/step_defs/ -n logical --junit-xml=results-out.xml
@@ -109,7 +109,7 @@ What we are going to do here is change the project to include the automatic test
 5. Copy the contents of wdio-sample/workflow.yaml from this repo to the bottom of the file
 6. Commit and push the todo-app code to CodeCatalyst
 7. In Amazon CodeCatalyst open the CI/CD > Workflows UI in your project
-8. You will see 3 new action boxes at the end of the visual workflow screen
+8. You will see 3 new action boxes at the end of the visual workflow screen (if your using the Pytest sample you will see 4 new boxes)
     1.  One that creates a devicefarm project
     2.  One that runs the tests
     3.  One that gets the DeviceFarm test artifacts

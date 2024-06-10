@@ -52,6 +52,24 @@ opensource-codeofconduct@amazon.com with any additional questions or comments.
 
 If you discover a potential security issue in this project we ask that you notify AWS/Amazon Security via our [vulnerability reporting page](http://aws.amazon.com/security/vulnerability-reporting/). Please do **not** create a public github issue.
 
+Updating Dependencies to latest versions. Doing this will need to have a full test of the To Do app harnesses
+
+### Python
+```
+poetry add <package_name>@latest
+poetry lock --no-update
+```
+
+### wdio
+```
+npx npm-check-updates -u
+npm audit # REVIEW
+npm audit fix
+npm i --package-lock-only
+```
+
+### 
+
 ## Licensing
 
 See the [LICENSE](LICENSE) file for our project's licensing. We will ask you to confirm the licensing of your contribution.

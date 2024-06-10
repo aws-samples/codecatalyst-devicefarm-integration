@@ -49,9 +49,9 @@ def context():
 def init_driver(request):
     
     if request._pyfuncitem.callspec.id == "Chrome":
-      options = chrome_options_mod()
+        options = chrome_options_mod()
     else:
-      options = firefox_options_mod()
+        options = firefox_options_mod()
     
     b = Remote(command_executor=GRID_URL, options=options,)
 
@@ -81,12 +81,12 @@ def create_task(init_driver):
         create_todo_button.click()
         time.sleep(2)
         item_name_box = wait_until_loaded(
-            init_driver, '//*[contains(@aria-labelledby, "formField12")]'
+            init_driver, "//label[text()='Name']/following::input[1]"
         )
         item_name_box.send_keys(f"MyTask {TASK_GUID}")
 
         item_description_box = wait_until_loaded(
-            init_driver, '//*[contains(@aria-labelledby, "formField13")]'
+            init_driver, "//label[text()='Description']/following::textarea[1]"
         )
         item_description_box.send_keys(
             "My description - this is a really important task that you must complete"

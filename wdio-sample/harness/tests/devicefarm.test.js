@@ -16,10 +16,10 @@ describe('Todo App Test', () => {
 
     await browser.pause(2000)
 
-    const itemNameBox = await browser.$('//*[contains(@aria-labelledby, "formField12")]');
+    const itemNameBox = await browser.$('//label[text()="Name"]/following::input[1]');
     await itemNameBox.setValue(`MyTask ${task_guid}`);
 
-    const itemDescriptionBox = await browser.$('//*[contains(@aria-labelledby, "formField13")]');
+    const itemDescriptionBox = await browser.$('//label[text()="Description"]/following::textarea[1]');
     await itemDescriptionBox.setValue('My description - this is a really important task that you must complete')
 
     const submitTodoButton = await browser.$('#submit-button');
