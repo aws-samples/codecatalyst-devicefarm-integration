@@ -9,3 +9,19 @@ updates:
     commit-message:
       # Prefix all commit messages with "chore: "
       prefix: "chore"
+
+  - package-ecosystem: "poetry"
+    directory: "/"
+    schedule:
+      interval: daily
+      time: "06:00"
+    commit-message:
+      prefix: "chore"
+
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: daily
+      time: "06:00"
+    commit-message:
+      prefix: "chore"
