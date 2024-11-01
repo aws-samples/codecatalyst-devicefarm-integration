@@ -13,7 +13,7 @@ pytest-bdd = "^7.3.0"
 selenium = "^4.25.0"
 pyhamcrest = "^2.1.0"
 pytest-xdist = "^3.6.1"
-coverage = "^7.6.3"
+coverage = "^7.6.4"
 black = "^24.10.0"
 
 
