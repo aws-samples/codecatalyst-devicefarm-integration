@@ -12,6 +12,6 @@
         "wdio-aws-device-farm-service": "^8.0.11"
     },
     "dependencies": {
-        "@wdio/dot-reporter": "^9.1.3"
+        "@wdio/dot-reporter": "^9.2.2"
     }
 }
