@@ -5,7 +5,7 @@
     "devDependencies": {
         "@wdio/cli": "^9.2.10",
         "@wdio/junit-reporter": "^9.2.2",
-        "@wdio/local-runner": "^9.2.8",
+        "@wdio/local-runner": "^9.2.11",
         "@wdio/mocha-framework": "^9.2.8",
         "@wdio/spec-reporter": "^9.2.8",
         "puppeteer": "^23.6.1",
