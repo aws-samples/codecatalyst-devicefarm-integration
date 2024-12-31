@@ -8,7 +8,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-pytest = "^8.3.3"
+pytest = "^8.3.4"
 pytest-bdd = "^8.0.0"
 selenium = "^4.27.1"
 pyhamcrest = "^2.1.0"
