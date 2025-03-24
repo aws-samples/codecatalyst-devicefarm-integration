@@ -9,7 +9,7 @@
         "@wdio/mocha-framework": "^9.9.0",
         "@wdio/spec-reporter": "^9.9.0",
         "puppeteer": "^24.2.0",
-        "wdio-aws-device-farm-service": "^8.0.11"
+        "wdio-aws-device-farm-service": "^8.0.12"
     },
     "dependencies": {
         "@wdio/dot-reporter": "^9.9.0"
