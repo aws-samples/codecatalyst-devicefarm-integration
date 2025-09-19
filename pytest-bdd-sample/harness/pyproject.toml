@@ -14,7 +14,7 @@ selenium = "^4.30.0"
 pyhamcrest = "^2.1.0"
 pytest-xdist = "^3.8.0"
 coverage = "^7.7.1"
-black = "^25.1.0"
+black = "^25.9.0"
 
 
 [build-system]
