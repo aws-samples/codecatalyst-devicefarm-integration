@@ -69,14 +69,14 @@ uvloop = ["uvloop (>=0.15.2)"]
 
 [[package]]
 name = "certifi"
-version = "2024.7.4"
+version = "2026.1.4"
 description = "Python package for providing Mozilla's CA Bundle."
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 groups = ["main"]
 files = [
-    {file = "certifi-2024.7.4-py3-none-any.whl", hash = "sha256:c198e21b1289c2ab85ee4e67bb4b4ef3ead0892059901a8d5b622f24a1101e90"},
-    {file = "certifi-2024.7.4.tar.gz", hash = "sha256:5a1e7645bc0ec61a09e26c36f6106dd4cf40c6db3a1fb6352b0244e7fb057c7b"},
+    {file = "certifi-2026.1.4-py3-none-any.whl", hash = "sha256:9943707519e4add1115f44c2bc244f782c0249876bf51b6599fee1ffbedd685c"},
+    {file = "certifi-2026.1.4.tar.gz", hash = "sha256:ac726dd470482006e014ad384921ed6438c457018f4b3d204aea4281258b2120"},
 ]
 
 [[package]]
@@ -703,23 +703,23 @@ testing = ["filelock"]
 
 [[package]]
 name = "selenium"
-version = "4.30.0"
+version = "4.36.0"
 description = "Official Python bindings for Selenium WebDriver"
 optional = false
 python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "selenium-4.30.0-py3-none-any.whl", hash = "sha256:90bcd3be86a1762100a093b33e5e4530b328226da94208caadb15ce13243dffd"},
-    {file = "selenium-4.30.0.tar.gz", hash = "sha256:16ab890fc7cb21a01e1b1e9a0fbaa9445fe30837eabc66e90b3bacf12138126a"},
+    {file = "selenium-4.36.0-py3-none-any.whl", hash = "sha256:525fdfe96b99c27d9a2c773c75aa7413f4c24bdb7b9749c1950aa3b5f79ed915"},
+    {file = "selenium-4.36.0.tar.gz", hash = "sha256:0eced83038736c3a013b824116df0b6dbb83e93721545f51b680451013416723"},
 ]
 
 [package.dependencies]
-certifi = ">=2021.10.8"
-trio = ">=0.17,<1.0"
-trio-websocket = ">=0.9,<1.0"
-typing_extensions = ">=4.9,<5.0"
-urllib3 = {version = ">=1.26,<3", extras = ["socks"]}
-websocket-client = ">=1.8,<2.0"
+certifi = ">=2025.6.15"
+trio = ">=0.30.0,<1.0"
+trio-websocket = ">=0.12.2,<1.0"
+typing_extensions = ">=4.14.0,<5.0"
+urllib3 = {version = ">=2.5.0,<3.0", extras = ["socks"]}
+websocket-client = ">=1.8.0,<2.0"
 
 [[package]]
 name = "six"
@@ -772,14 +772,14 @@ files = [
 
 [[package]]
 name = "trio"
-version = "0.25.1"
+version = "0.31.0"
 description = "A friendly Python library for async concurrency and I/O"
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "trio-0.25.1-py3-none-any.whl", hash = "sha256:e42617ba091e7b2e50c899052e83a3c403101841de925187f61e7b7eaebdf3fb"},
-    {file = "trio-0.25.1.tar.gz", hash = "sha256:9f5314f014ea3af489e77b001861c535005c3858d38ec46b6b071ebfa339d7fb"},
+    {file = "trio-0.31.0-py3-none-any.whl", hash = "sha256:b5d14cd6293d79298b49c3485ffd9c07e3ce03a6da8c7dfbe0cb3dd7dc9a4774"},
+    {file = "trio-0.31.0.tar.gz", hash = "sha256:f71d551ccaa79d0cb73017a33ef3264fde8335728eb4c6391451fe5d253a9d5b"},
 ]
 
 [package.dependencies]
@@ -793,31 +793,32 @@ sortedcontainers = "*"
 
 [[package]]
 name = "trio-websocket"
-version = "0.11.1"
+version = "0.12.2"
 description = "WebSocket library for Trio"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 groups = ["main"]
 files = [
-    {file = "trio-websocket-0.11.1.tar.gz", hash = "sha256:18c11793647703c158b1f6e62de638acada927344d534e3c7628eedcb746839f"},
-    {file = "trio_websocket-0.11.1-py3-none-any.whl", hash = "sha256:520d046b0d030cf970b8b2b2e00c4c2245b3807853ecd44214acd33d74581638"},
+    {file = "trio_websocket-0.12.2-py3-none-any.whl", hash = "sha256:df605665f1db533f4a386c94525870851096a223adcb97f72a07e8b4beba45b6"},
+    {file = "trio_websocket-0.12.2.tar.gz", hash = "sha256:22c72c436f3d1e264d0910a3951934798dcc5b00ae56fc4ee079d46c7cf20fae"},
 ]
 
 [package.dependencies]
 exceptiongroup = {version = "*", markers = "python_version < \"3.11\""}
+outcome = ">=1.2.0"
 trio = ">=0.11"
 wsproto = ">=0.14"
 
 [[package]]
 name = "typing-extensions"
-version = "4.9.0"
-description = "Backported and Experimental Type Hints for Python 3.8+"
+version = "4.15.0"
+description = "Backported and Experimental Type Hints for Python 3.9+"
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "typing_extensions-4.9.0-py3-none-any.whl", hash = "sha256:af72aea155e91adfc61c3ae9e0e342dbc0cba726d6cba4b6c72c1f34e47291cd"},
-    {file = "typing_extensions-4.9.0.tar.gz", hash = "sha256:23478f88c37f27d76ac8aee6c905017a143b0b1b886c3c9f66bc2fd94f9f5783"},
+    {file = "typing_extensions-4.15.0-py3-none-any.whl", hash = "sha256:f0fa19c6845758ab08074a0cfa8b7aecb71c999ca73d62883bc25cc018c4e548"},
+    {file = "typing_extensions-4.15.0.tar.gz", hash = "sha256:0cea48d173cc12fa28ecabc3b837ea3cf6f38c6d1136f85cbaaf598984861466"},
 ]
 
 [[package]]
@@ -876,4 +877,4 @@ h11 = ">=0.9.0,<1"
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.9"
-content-hash = "f99e9e596f5e35f8930bef1939a158f8e25bb432d590d645677d65822649d445"
+content-hash = "eb532b4048d1f4cc9cda1c89f2f993512484e9c73f523822f2fdafae3e654890"
